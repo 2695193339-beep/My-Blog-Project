@@ -1,0 +1,61 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${blog.datasource.driver-class-name}
+      url: ${blog.datasource.url}
+      username: ${blog.datasource.username}
+      password: ${blog.datasource.password}
+  data:
+    redis:
+      port: 6379
+      host: localhost
+      database: 0
+
+
+mybatis-plus:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.heian.blog.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: deleted      # 逻辑删除字段名
+      logic-delete-value: 1            # 已删除的值
+      logic-not-delete-value: 0        # 未删除的值
+
+
+
+
+logging:
+  level:
+    com:
+      heian:
+        blog:
+          mapper: debug
+          service: info
+          controller: info
+
+
+blog:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    blog-secret-key: ${blog.jwt.blog-secret-key}
+    # 设置jwt过期时间
+    blog-ttl: ${blog.jwt.blog-ttl}
+    # 设置前端传递过来的令牌名称
+    blog-token-name: ${blog.jwt.blog-token-name}
+  alioss:
+    access-key-id: ${blog.alioss.access-key-id}
+    endpoint: ${blog.alioss.endpoint}
+    bucketName: ${blog.alioss.bucketName}
+    region: ${blog.alioss.region}
+    access-key-secret: ${blog.alioss.access-key-secret}
