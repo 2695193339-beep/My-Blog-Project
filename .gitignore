@@ -1,0 +1,26 @@
+# ====== 1. Maven 编译产物 ======
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+out/
+
+# ====== 2. IDEA 专属配置 ======
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# ====== 3. 日志与临时文件 ======
+logs/
+*.log
+*.tmp
+
+# ====== 4. 操作系统生成的文件 ======
+.DS_Store
+Thumbs.db
+
+# ====== 5. 敏感配置文件 (重点！) ======
+# 如果你的 application-dev.yml 里有数据库密码，请取消下面这行的注释（删掉前面的 #）
+# 这样可以保证它永远不会被提交到 GitHub
+application-dev.yml
